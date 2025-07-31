@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Code, User, Briefcase, GraduationCap, Award, ExternalLink, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, MapPin,  ExternalLink, Menu, X } from 'lucide-react';
 import imagenPerfil from '../../../../public/imagenPerfil.jpg';
-import Proyectos from '../components/ListadoProyectos/Proyecto';
 import Proyecto from '../components/ListadoProyectos/Proyecto';
 interface Project {
   id: number;

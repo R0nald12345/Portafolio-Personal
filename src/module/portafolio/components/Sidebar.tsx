@@ -1,11 +1,6 @@
 import { RiAlignRight } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import { useState } from "react";
-import { FaSheetPlastic, FaChalkboardUser, FaPeopleGroup } from "react-icons/fa6";
-import { FaUniversity, FaLayerGroup } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
-//import { Link, useLocation } from "react-router-dom";
-import { IoPeople } from "react-icons/io5";
 import imagenPerfil from '../../../../public/imagenPerfil.jpg'
 
 import { FaFacebookSquare } from "react-icons/fa";
