@@ -320,7 +320,7 @@ const Informacion: React.FC = () => {
                 </div>
                 <div className="flex space-x-4">
                   <a
-                    href={project.githubUrl}
+                    href={"https://gif-expert-practice-ronald.netlify.app"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-gray-300 hover:text-white transition-colors"
