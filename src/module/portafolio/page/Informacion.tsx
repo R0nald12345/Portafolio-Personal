@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin,  ExternalLink, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, MapPin,  ExternalLink, Menu, X, Eye } from 'lucide-react';
 import imagenPerfil from '../../../../public/imagenPerfil.jpg';
 import Proyecto from '../components/ListadoProyectos/Proyecto';
 interface Project {
@@ -9,6 +9,7 @@ interface Project {
   technologies: string[];
   githubUrl: string;
   liveUrl?: string;
+  VerProyecto: string;
 }
 
 interface Experience {
@@ -27,24 +28,27 @@ const Informacion: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Plataforma de Gestión Municipal",
-      description: "Sistema de gestión para la Subalcaldía Distrito 7 con implementación de CI/CD",
-      technologies: ["React", "TailwindCSS", "JavaScript", "GitHub Actions"],
-      githubUrl: "https://github.com/ronald/proyecto1"
+      title: "Plataforma web de Gifs",
+      description: "Sistema de web de generacion automatica de Gifs con implementación de CI/CD",
+      technologies: ["React", "TailwindCSS", "JavaScript", "GitHub"],
+      githubUrl: "https://github.com/ronald/proyecto1",
+      VerProyecto: "https://mi-proyecto1.com"
     },
     {
       id: 2,
       title: "Sistema de Estructuras de Datos",
       description: "Implementación de estructuras de datos avanzadas para enseñanza universitaria",
       technologies: ["C#", "Java", "Algoritmos", "Estructuras de Datos"],
-      githubUrl: "https://github.com/ronald/proyecto2"
+      githubUrl: "https://github.com/ronald/proyecto2",
+      VerProyecto: "https://mi-proyecto2.com"
     },
     {
       id: 3,
       title: "API Backend con NestJS",
       description: "API REST robusta con autenticación y documentación completa",
       technologies: ["NestJS", "TypeScript", "PostgreSQL", "JWT"],
-      githubUrl: "https://github.com/ronald/proyecto3"
+      githubUrl: "https://github.com/ronald/proyecto3",
+      VerProyecto: "https://mi-proyecto3.com"
     }
   ];
 
@@ -308,6 +312,7 @@ const Informacion: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
               <div key={project.id} className="bg-white/10 backdrop-blur-md rounded-lg p-6 hover:bg-white/20 transition-all">
+               
                 <Proyecto key={project.id} />
                 <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
                 <p className="text-gray-300 mb-4">{project.description}</p>
@@ -320,13 +325,22 @@ const Informacion: React.FC = () => {
                 </div>
                 <div className="flex space-x-4">
                   <a
-                    href={"https://gif-expert-practice-ronald.netlify.app"}
+                    href={"https://github.com/R0nald12345/react-gif-expert"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-gray-300 hover:text-white transition-colors"
                   >
                     <Github size={16} className="mr-1" />
                     GitHub
+                  </a>
+                  <a
+                    href={"https://gif-expert-practice-ronald.netlify.app"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-gray-300 hover:text-white transition-colors"
+                  >
+                    <Eye size={16} className="mr-1" />
+                    Ver Proyecto
                   </a>
                   {project.liveUrl && (
                     <a
