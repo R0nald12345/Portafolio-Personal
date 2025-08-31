@@ -7,12 +7,17 @@ const slides: string[] = [
     "/proyectosGitHub/GitExpertApp/laptopGitApp.png"
 ];
 
-const Proyecto = () => {
+interface ProyectoProps {
+  imagenes: string[];
+}
+
+
+const Proyecto = ({imagenes}: ProyectoProps) => {
   return (
     <div>
       <div className="max-w-lg">
         <Carrusel>
-          {slides.map((slide, idx) => (
+          {imagenes?.map((slide, idx) => (
             <img
               key={idx}
               src={slide}
