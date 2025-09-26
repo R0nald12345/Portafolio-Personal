@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DashboardLayout from "../components/DashboardLayout";
+import Header from "../layout/Header";
 import Informacion from "../page/Informacion";
 //import DashboardLayout from "./DashboardLayout";
 
@@ -8,7 +8,7 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         {/* Ruta principal con DashboardLayout */}
-        <Route path="/" element={<DashboardLayout/>}>
+        <Route path="/" element={<Header/>}>
           {/* Aquí puedes definir rutas hijas */}
           {/* <Route index element={<h1>Bienvenido al Dashboard</h1>} /> */}
           {/* Ejemplo de otra ruta */}
