@@ -3,7 +3,7 @@ import { MapPin } from 'lucide-react';
 
 const skills = {
     frontend: ["React", "Next.js", "TypeScript", "JavaScript", "TailwindCSS", "HTML"],
-    backend: ["NestJS", "C#", "Java", "Python", "C++"],
+    backend: ["NestJS", "C#", "Java", "Python", "C++", "NodeJS", "Express" ],
     tools: ["Git", "GitHub", "CI/CD", "Visual Basic", "Delphi"]
 };
 
@@ -75,14 +75,14 @@ const AboutMe = () => {
                                         className="w-8 h-8 hover:scale-110 transition-transform"
                                     />
                                 </a>
-                                <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.linkedin.com/in/ronald-camino-puma-608261217/" target="_blank" rel="noopener noreferrer">
                                     <img
                                         src="/Logos/linkedin.svg"
                                         alt="LinkedIn"
                                         className="w-8 h-8 hover:scale-110 transition-transform"
                                     />
                                 </a>
-                                <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.tiktok.com/@ronaldcp2001" target="_blank" rel="noopener noreferrer">
                                     <img
                                         src="/Logos/tiktok.svg"
                                         alt="TickTock"
