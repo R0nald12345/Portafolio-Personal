@@ -27,7 +27,7 @@ const Contact = () => {
                             <p className="text-gray-300 text-sm">+591 69003180</p>
                         </a>
                         <a
-                            href="#"
+                            href="https://www.linkedin.com/in/ronald-camino-puma-608261217/"
                             className="bg-white/10 backdrop-blur-md rounded-lg p-6 hover:bg-white/20 transition-all text-center"
                         >
                             <Linkedin size={40} className="mx-auto text-blue-500 mb-4" />

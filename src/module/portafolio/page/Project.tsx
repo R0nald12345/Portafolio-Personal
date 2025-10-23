@@ -50,7 +50,40 @@ interface Project {
       technologies: ["NestJS", "TypeScript", "PostgreSQL", "JWT"],
       gitHubUrl: "https://github.com/ronald/proyecto3",
       VerProyecto: "https://mi-proyecto3.com"
-    }
+    },
+    {
+      id: 4,
+      title: "Sistema Administrativo Sub-Alcaldía Distrito 7",
+      description: "Sistema administrativo para gestionar información y servicios de la sub-alcaldía",
+      technologies: ["NestJS", "TypeScript", "PostgreSQL", "React", "TailwindCSS", "Js"],
+      gitHubUrl: "https://github.com/R0nald12345/Proyecto-Front-Sub-Distrito-7",
+      VerProyecto: "https://www.youtube.com/watch?v=geTE6VAyPXs&t=923s",
+      imagenes: [
+        "/proyectosGitHub/sistemaDistrito7/imagenDistrito1.png",
+        "/proyectosGitHub/sistemaDistrito7/imagenDistrito2.png"
+      ]
+    },
+    {
+      id: 5,
+      title: "Sistema de Gestion de Ventas y Pedido de Comidas",
+      description: "Sistema de gestion de ventas y pedidos de comidas con Orden y entrega",
+      technologies: ["Prisma", "TypeScript", "PostgreSQL", "NEXT.js", "TailwindCSS"],
+      gitHubUrl: "https://github.com/R0nald12345/Proyecto-Front-Sub-Distrito-7",
+      VerProyecto: "https://www.youtube.com/watch?v=geTE6VAyPXs&t=923s",
+      imagenes: [
+        "/proyectosGitHub/gestionComida/imagen1.png",
+      ]
+    },
+    
+    // {
+    //   id: 5,
+    //   title: "API Backend con NestJS",
+    //   description: "API REST robusta con autenticación y documentación completa",
+    //   technologies: ["NestJS", "TypeScript", "PostgreSQL", "JWT"],
+    //   gitHubUrl: "https://github.com/ronald/proyecto3",
+    //   VerProyecto: "https://mi-proyecto3.com"
+    // },
+    
   ];
 
 
@@ -65,9 +98,7 @@ const Project = () => {
               <div key={project.id} className="bg-white/10 backdrop-blur-md rounded-lg p-6 hover:bg-white/20 transition-all">
 
                 <Proyecto 
-                
                     key={project.id} 
-                    
                     imagenes={project.imagenes ?? []}
                 />
 
