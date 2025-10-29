@@ -45,11 +45,14 @@ interface Project {
     },
     {
       id: 3,
-      title: "API Backend con NestJS",
-      description: "API REST robusta con autenticación y documentación completa",
-      technologies: ["NestJS", "TypeScript", "PostgreSQL", "JWT"],
-      gitHubUrl: "https://github.com/ronald/proyecto3",
-      VerProyecto: "https://mi-proyecto3.com"
+      title: "Calculadora de Propinas",
+      description: "Aplicación web para calcular propinas de manera sencilla",
+      technologies: ["React", "TypeScript", "TailwindCSS", "HTML"],
+      gitHubUrl: "https://github.com/R0nald12345/calculadora-propina-react-ts",
+      VerProyecto: "https://scintillating-empanada-1c155c.netlify.app/",
+      imagenes: [
+        "/proyectosGitHub/calculadoraPropinas/calculadoraPropinas.png",
+      ]
     },
     {
       id: 4,
@@ -69,9 +72,42 @@ interface Project {
       description: "Sistema de gestion de ventas y pedidos de comidas con Orden y entrega",
       technologies: ["Prisma", "TypeScript", "PostgreSQL", "NEXT.js", "TailwindCSS"],
       gitHubUrl: "https://github.com/R0nald12345/Proyecto-Front-Sub-Distrito-7",
-      VerProyecto: "https://www.youtube.com/watch?v=geTE6VAyPXs&t=923s",
+      VerProyecto: "https://www.tiktok.com/@ronaldcp2001/video/7458532969204976902",
       imagenes: [
         "/proyectosGitHub/gestionComida/imagen1.png",
+      ]
+    },
+    {
+      id: 6,
+      title: "Proyecto de Estructura de Datos ArbolBinario",
+      description: "Implementación de un árbol binario en Python para organizar y buscar datos eficientemente",
+      technologies: ["Flask", "JavaScript", "Python", "HTML", "CSS"],
+      gitHubUrl: "https://github.com/R0nald12345/AvanceINF310SA2-2025/tree/main/proyectoGraficoArbolBinario",
+      VerProyecto: "https://www.youtube.com/watch?v=cWtV3fuSQh8&list=PLoRqJaMoXqiCX3DXALweESfvpwhwgO8Lu&index=6",
+      imagenes: [
+        "/proyectosGitHub/arbolBinario/ArbolBinario.png",
+      ]
+    },
+    {
+      id: 7,
+      title: "Proyecto de Control de Gastos",
+      description: "Implementación de un sistema de control de gastos",
+      technologies: ["JavaScript", "TailwindCSS", "HTML", "React"],
+      gitHubUrl: "https://github.com/R0nald12345/proyecto-control-gasto-JS",
+      VerProyecto: "https://candid-melba-59f388.netlify.app/",
+      imagenes: [
+        "/proyectosGitHub/controlGasto/gasto.png",
+      ]
+    },
+    {
+      id: 8,
+      title: "Proyecto de control de Pacientes",
+      description: "Implementación de un sistema de control de pacientes",
+      technologies: ["TypeScript", "TailwindCSS", "HTML", "React"],
+      gitHubUrl: "https://github.com/R0nald12345/pacientes-react-ts",
+      VerProyecto: "https://golden-treacle-c10a81.netlify.app/",
+      imagenes: [
+        "/proyectosGitHub/pacientes/pacientes.png",
       ]
     },
     
