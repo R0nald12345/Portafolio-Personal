@@ -1,10 +1,11 @@
-
 import { MapPin } from 'lucide-react';
 
 const skills = {
     frontend: ["React", "Next.js", "TypeScript", "JavaScript", "TailwindCSS", "HTML"],
-    backend: ["NestJS", "C#", "Java", "Python", "C++", "NodeJS", "Express" ],
-    tools: ["Git", "GitHub", "CI/CD", "Visual Basic", "Delphi"]
+    backend: ["NestJS", "Node.js", "Express", "Python", "C#", "Java", "C++"],
+    databases: ["PostgreSQL", "TypeORM"],
+    devops: ["Docker", "Nginx", "CI/CD", "GitHub Actions", "Terraform", "AWS"],
+    erp: ["Odoo 17", "Odoo 18", "Python (Odoo)", "QWeb"]
 };
 
 const AboutMe = () => {
@@ -16,14 +17,19 @@ const AboutMe = () => {
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     <div>
                         <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                            Soy un desarrollador apasionado por la tecnología y la educación. Con experiencia
-                            en desarrollo FullStack y como educador universitario, combino habilidades técnicas
-                            sólidas con la capacidad de transmitir conocimiento de manera efectiva.
+                            Soy un desarrollador FullStack apasionado por construir soluciones de software reales.
+                            Trabajo en Ribentek SRL como desarrollador e implementador Odoo, participando en
+                            proyectos para clínicas, ópticas y comercios con módulos ERP personalizados.
+                            Paralelamente llevo adelante proyectos freelance con clientes reales usando
+                            Next.js, NestJS y PostgreSQL.
                         </p>
                         <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                            He participado en proyectos académicos y hackatones, además de contribuir al
-                            desarrollo de plataformas gubernamentales. Como creador de contenido, comparto
-                            conocimientos de programación en redes sociales con más de 500 seguidores.
+                            Soy Auxiliar de Cátedra en la UAGRM, en las facultades de Ingeniería en
+                            Computación y Ciencias de la Computación, y Tecnología y Ciencias Exactas,
+                            donde enseño programación, algoritmos y estructuras de datos. Cuento con un
+                            Diplomado en Arquitectura de Software y me encuentro en la penúltima etapa
+                            de un Diplomado en DevOps. Comparto mi proceso de aprendizaje en mi canal
+                            de YouTube <span className="text-blue-300 font-medium">Buscando el Código</span>.
                         </p>
                         <div className="flex items-center text-gray-300 mb-4">
                             <MapPin size={20} className="mr-2" />
@@ -52,53 +58,50 @@ const AboutMe = () => {
                             </div>
                         </div>
                         <div className="bg-white/10 backdrop-blur-md rounded-lg p-6">
+                            <h3 className="text-xl font-semibold text-white mb-4">Bases de Datos & DevOps</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {[...skills.databases, ...skills.devops].map((skill) => (
+                                    <span key={skill} className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="bg-white/10 backdrop-blur-md rounded-lg p-6">
+                            <h3 className="text-xl font-semibold text-white mb-4">ERP & Odoo</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {skills.erp.map((skill) => (
+                                    <span key={skill} className="bg-orange-500/20 text-orange-300 px-3 py-1 rounded-full text-sm">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="bg-white/10 backdrop-blur-md rounded-lg p-6">
                             <h3 className="text-xl font-semibold text-white mb-4">Redes Sociales</h3>
                             <div className="flex flex-wrap gap-2">
                                 <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
-                                    <img
-                                        src="/Logos/facebook.svg"
-                                        alt="Facebook"
-                                        className="w-8 h-8 hover:scale-110 transition-transform"
-                                    />
+                                    <img src="/Logos/facebook.svg" alt="Facebook" className="w-8 h-8 hover:scale-110 transition-transform" />
                                 </a>
                                 <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
-                                    <img
-                                        src="/Logos/youtube.svg"
-                                        alt="YouTube"
-                                        className="w-8 h-8 hover:scale-110 transition-transform"
-                                    />
+                                    <img src="/Logos/youtube.svg" alt="YouTube" className="w-8 h-8 hover:scale-110 transition-transform" />
                                 </a>
                                 <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">
-                                    <img
-                                        src="/Logos/instagram.svg"
-                                        alt="Instagram"
-                                        className="w-8 h-8 hover:scale-110 transition-transform"
-                                    />
+                                    <img src="/Logos/instagram.svg" alt="Instagram" className="w-8 h-8 hover:scale-110 transition-transform" />
                                 </a>
                                 <a href="https://www.linkedin.com/in/ronald-camino-puma-608261217/" target="_blank" rel="noopener noreferrer">
-                                    <img
-                                        src="/Logos/linkedin.svg"
-                                        alt="LinkedIn"
-                                        className="w-8 h-8 hover:scale-110 transition-transform"
-                                    />
+                                    <img src="/Logos/linkedin.svg" alt="LinkedIn" className="w-8 h-8 hover:scale-110 transition-transform" />
                                 </a>
                                 <a href="https://www.tiktok.com/@ronaldcp2001" target="_blank" rel="noopener noreferrer">
-                                    <img
-                                        src="/Logos/tiktok.svg"
-                                        alt="TickTock"
-                                        className="w-8 h-8 hover:scale-110 transition-transform"
-                                    />
+                                    <img src="/Logos/tiktok.svg" alt="TikTok" className="w-8 h-8 hover:scale-110 transition-transform" />
                                 </a>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </>
+    );
+};
 
-    )
-}
-
-export default AboutMe
+export default AboutMe;
