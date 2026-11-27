@@ -1,1 +1,169 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    --surface-page: #0e0e10;
+    --surface-card: #141417;
+    --surface-subtle: #1b1b1f;
+    --ink-primary: #f4f4f5;
+    --ink-secondary: #a1a1aa;
+    --ink-muted: #71717a;
+    --line-subtle: #27272a;
+    --line-strong: #3f3f46;
+    --accent: #d99b43;
+    --accent-hover: #e6ae5c;
+    --accent-soft: #2a2115;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family:
+      'Inter',
+      'SF Pro Text',
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
+    background-color: var(--surface-page);
+    color: var(--ink-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--surface-page);
+    color: var(--ink-primary);
+  }
+
+  code,
+  pre,
+  .font-mono-tech {
+    font-family:
+      'JetBrains Mono',
+      'SF Mono',
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--accent-soft);
+    color: var(--ink-primary);
+  }
+}
+
+/* Scroll-triggered editorial reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 75ms;
+}
+
+.reveal-delay-2 {
+  transition-delay: 150ms;
+}
+
+.reveal-delay-3 {
+  transition-delay: 225ms;
+}
+
+.reveal-delay-4 {
+  transition-delay: 300ms;
+}
+
+/* Subtle entrance on initial mount */
+@keyframes editorial-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-editorial-enter {
+  animation: editorial-enter 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-editorial-enter-delay {
+  animation: editorial-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) 110ms both;
+}
+
+/* Native CSS scroll-driven reading progress hairline (no inline styles) */
+.scroll-progress-track {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scroll-progress-bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+@supports (animation-timeline: scroll()) {
+  @keyframes grow-scroll-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .scroll-progress-bar {
+    animation: grow-scroll-progress linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-editorial-enter,
+  .animate-editorial-enter-delay,
+  .scroll-progress-bar {
+    animation: none;
+  }
+}

@@ -1,180 +1,225 @@
-
-import { Github, ExternalLink, Eye } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUpRight, Github, Lock, PlayCircle, Youtube } from 'lucide-react';
+import {
+  PROJECTS,
+  SOCIAL_LINKS,
+  type ProjectCategory,
+} from '../data/portfolioData';
 import Proyecto from '../components/ListadoProyectos/Proyecto';
+import Reveal from '../components/Reveal';
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-  gitHubUrl: string;
-  liveUrl?: string;
-  VerProyecto: string;
-  imagenes?: string[];
-}
+type FilterValue = 'all' | ProjectCategory;
 
-    // "/proyectosGitHub/GitExpertApp/CelularGitApp.png",
-    // "/proyectosGitHub/GitExpertApp/laptopGitApp.png"
+const FILTERS: { value: FilterValue; label: string }[] = [
+  { value: 'all', label: 'Todos' },
+  { value: 'erp-infra', label: 'ERP & Infraestructura' },
+  { value: 'web-ecommerce', label: 'Web & E-commerce' },
+  { value: 'academico', label: 'Pasantía / Open Source' },
+];
 
-  // Datos de ejemplo para proyectos - puedes reemplazar con tus proyectos reales
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Plataforma web de Gifs",
-      description: "Sistema de web de generacion automatica de Gifs con implementación de CI/CD",
-      technologies: ["React", "TailwindCSS", "JavaScript", "GitHub"],
-      gitHubUrl: "https://github.com/ronald/proyecto1",
-      VerProyecto: "https://mi-proyecto1.com",
-      imagenes: [
-        "/proyectosGitHub/GitExpertApp/CelularGitApp.png",
-        "/proyectosGitHub/GitExpertApp/laptopGitApp.png"
-      ]
+const formatHost = (url: string): string => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return 'Visitar sitio';
+  }
+};
 
-    },
-    {
-      id: 2,
-      title: "Juego de Caballito Web",
-      description: "Juego creado con Js y Phaser",
-      technologies: ["HTML", "JavaSScript"],
-      gitHubUrl: "https://github.com/ronald/proyecto2",
-      VerProyecto: "https://remarkable-gelato-f6a104.netlify.app/",
-      imagenes: [
-        "/proyectosGitHub/juegoCaballito/CelularJuegoCaballito.png",
-        "/proyectosGitHub/juegoCaballito/laptopJuegoCaballito.png"
-      ]
-    },
-    {
-      id: 3,
-      title: "Calculadora de Propinas",
-      description: "Aplicación web para calcular propinas de manera sencilla",
-      technologies: ["React", "TypeScript", "TailwindCSS", "HTML"],
-      gitHubUrl: "https://github.com/R0nald12345/calculadora-propina-react-ts",
-      VerProyecto: "https://scintillating-empanada-1c155c.netlify.app/",
-      imagenes: [
-        "/proyectosGitHub/calculadoraPropinas/calculadoraPropinas.png",
-      ]
-    },
-    {
-      id: 4,
-      title: "Sistema Administrativo Sub-Alcaldía Distrito 7",
-      description: "Sistema administrativo para gestionar información y servicios de la sub-alcaldía",
-      technologies: ["NestJS", "TypeScript", "PostgreSQL", "React", "TailwindCSS", "Js"],
-      gitHubUrl: "https://github.com/R0nald12345/Proyecto-Front-Sub-Distrito-7",
-      VerProyecto: "https://www.youtube.com/watch?v=geTE6VAyPXs&t=923s",
-      imagenes: [
-        "/proyectosGitHub/sistemaDistrito7/imagenDistrito1.png",
-        "/proyectosGitHub/sistemaDistrito7/imagenDistrito2.png"
-      ]
-    },
-    {
-      id: 5,
-      title: "Sistema de Gestion de Ventas y Pedido de Comidas",
-      description: "Sistema de gestion de ventas y pedidos de comidas con Orden y entrega",
-      technologies: ["Prisma", "TypeScript", "PostgreSQL", "NEXT.js", "TailwindCSS"],
-      gitHubUrl: "https://github.com/R0nald12345/Proyecto-Front-Sub-Distrito-7",
-      VerProyecto: "https://www.tiktok.com/@ronaldcp2001/video/7458532969204976902",
-      imagenes: [
-        "/proyectosGitHub/gestionComida/imagen1.png",
-      ]
-    },
-    {
-      id: 6,
-      title: "Proyecto de Estructura de Datos ArbolBinario",
-      description: "Implementación de un árbol binario en Python para organizar y buscar datos eficientemente",
-      technologies: ["Flask", "JavaScript", "Python", "HTML", "CSS"],
-      gitHubUrl: "https://github.com/R0nald12345/AvanceINF310SA2-2025/tree/main/proyectoGraficoArbolBinario",
-      VerProyecto: "https://www.youtube.com/watch?v=cWtV3fuSQh8&list=PLoRqJaMoXqiCX3DXALweESfvpwhwgO8Lu&index=6",
-      imagenes: [
-        "/proyectosGitHub/arbolBinario/ArbolBinario.png",
-      ]
-    },
-    {
-      id: 7,
-      title: "Proyecto de Control de Gastos",
-      description: "Implementación de un sistema de control de gastos",
-      technologies: ["JavaScript", "TailwindCSS", "HTML", "React"],
-      gitHubUrl: "https://github.com/R0nald12345/proyecto-control-gasto-JS",
-      VerProyecto: "https://candid-melba-59f388.netlify.app/",
-      imagenes: [
-        "/proyectosGitHub/controlGasto/gasto.png",
-      ]
-    },
-    {
-      id: 8,
-      title: "Proyecto de control de Pacientes",
-      description: "Implementación de un sistema de control de pacientes",
-      technologies: ["TypeScript", "TailwindCSS", "HTML", "React"],
-      gitHubUrl: "https://github.com/R0nald12345/pacientes-react-ts",
-      VerProyecto: "https://golden-treacle-c10a81.netlify.app/",
-      imagenes: [
-        "/proyectosGitHub/pacientes/pacientes.png",
-      ]
-    },
-    
-    // {
-    //   id: 5,
-    //   title: "API Backend con NestJS",
-    //   description: "API REST robusta con autenticación y documentación completa",
-    //   technologies: ["NestJS", "TypeScript", "PostgreSQL", "JWT"],
-    //   gitHubUrl: "https://github.com/ronald/proyecto3",
-    //   VerProyecto: "https://mi-proyecto3.com"
-    // },
-    
-  ];
-
+const githubProfile = SOCIAL_LINKS.find((link) => link.id === 'github');
+const youtubeProfile = SOCIAL_LINKS.find((link) => link.id === 'youtube');
 
 const Project = () => {
+  const [activeFilter, setActiveFilter] = useState<FilterValue>('all');
+
+  const visibleProjects =
+    activeFilter === 'all'
+      ? PROJECTS
+      : PROJECTS.filter((project) => project.category === activeFilter);
+
   return (
-    <>
-       <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-white text-center mb-12">Proyectos</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Mencion de proyectos */}
-            {projects.map((project) => (
-              <div key={project.id} className="bg-white/10 backdrop-blur-md rounded-lg p-6 hover:bg-white/20 transition-all">
+    <div className="mx-auto max-w-5xl px-6">
+      <Reveal>
+        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div className="max-w-2xl">
+            <p className="font-mono-tech text-xs uppercase tracking-wider text-[#d99b43]">
+              03 / Proyectos
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-100 sm:text-3xl">
+              Proyectos destacados
+            </h2>
+          </div>
 
-                <Proyecto 
-                    key={project.id} 
-                    imagenes={project.imagenes ?? []}
-                />
+          <div
+            role="tablist"
+            aria-label="Filtrar proyectos por categoría"
+            className="flex flex-wrap gap-2"
+          >
+            {FILTERS.map((filter) => {
+              const isSelected = activeFilter === filter.value;
+              return (
+                <button
+                  key={filter.value}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setActiveFilter(filter.value)}
+                  className={`cursor-pointer rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+                    isSelected
+                      ? 'bg-zinc-100 text-zinc-950'
+                      : 'border border-zinc-800 bg-[#141417] text-zinc-400 hover:border-zinc-700 hover:text-zinc-100'
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </Reveal>
 
-                <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                    {/* Mencion de tecnologias Usadas */}
-                  {project.technologies.map((tech) => (
-                    <span key={tech} className="bg-green-500/20 text-green-300 px-2 py-1 rounded text-sm">
+      <div
+        key={activeFilter}
+        className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2"
+      >
+        {visibleProjects.map((project, index) => (
+          <Reveal
+            key={project.id}
+            delay={((index % 2) + 1) as 1 | 2}
+            className="flex"
+          >
+            <article className="flex w-full flex-col overflow-hidden rounded-xl border border-zinc-800/90 bg-[#141417] transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-700">
+              {project.images.length > 0 && (
+                <Proyecto imagenes={project.images} title={project.title} />
+              )}
+
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-wrap items-center justify-between gap-2 font-mono-tech text-[11px]">
+                  <span className="text-[#d99b43]">{project.categoryLabel}</span>
+                  <span className="rounded border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-zinc-400">
+                    {project.status}
+                  </span>
+                </div>
+
+                <h3 className="mt-3 text-xl font-semibold tracking-tight text-zinc-100">
+                  {project.title}
+                </h3>
+                <p className="mt-0.5 text-sm text-zinc-400">
+                  {project.subtitle}
+                </p>
+
+                <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+                  {project.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-1.5 border-t border-zinc-800/70 pt-4">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded border border-zinc-800 bg-zinc-900/70 px-2 py-0.5 font-mono-tech text-[11px] text-zinc-300"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
-                <div className="flex space-x-4">
-                  <a
-                    href={project.gitHubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-white transition-colors"
-                  >
-                    <Github size={16} className="mr-1" />
-                    GitHub
-                  </a>
-                  <a
-                    href={project.VerProyecto}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-300 hover:text-white transition-colors"
-                  >
-                    <Eye size={16} className="mr-1" />
-                    Ver Proyecto
-                  </a>
-                  
+
+                <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-5 text-xs">
+                  {project.repoVisibility === 'public' && project.repoUrl ? (
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-medium text-zinc-200 transition-colors hover:text-white"
+                    >
+                      <Github size={14} />
+                      Código fuente
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 font-mono-tech text-zinc-500">
+                      <Lock size={13} />
+                      Repositorio privado
+                    </span>
+                  )}
+
+                  <div className="flex items-center gap-4">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-1 font-medium text-[#d99b43] transition-colors hover:text-[#e6ae5c]"
+                      >
+                        {formatHost(project.liveUrl)}
+                        <ArrowUpRight
+                          size={14}
+                          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        />
+                      </a>
+                    )}
+
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-1 font-medium text-[#d99b43] transition-colors hover:text-[#e6ae5c]"
+                      >
+                        <PlayCircle size={14} />
+                        Ver demo
+                        <ArrowUpRight
+                          size={13}
+                          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            ))}
+            </article>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal className="mt-10">
+        <div className="flex flex-col items-start justify-between gap-4 rounded-xl border border-zinc-800/80 bg-[#141417] px-6 py-4 sm:flex-row sm:items-center">
+          <p className="text-sm text-zinc-400">
+            Más código abierto y material de programación en GitHub y YouTube.
+          </p>
+          <div className="flex shrink-0 flex-wrap items-center gap-4 text-xs font-medium">
+            {githubProfile && (
+              <a
+                href={githubProfile.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 text-zinc-200 transition-colors hover:text-white"
+              >
+                <Github size={14} />
+                GitHub
+                <ArrowUpRight
+                  size={13}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            )}
+            {youtubeProfile && (
+              <a
+                href={youtubeProfile.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-1.5 text-[#d99b43] transition-colors hover:text-[#e6ae5c]"
+              >
+                <Youtube size={14} />
+                {youtubeProfile.handle}
+                <ArrowUpRight
+                  size={13}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            )}
           </div>
         </div>
-    </>
-  )
-}
+      </Reveal>
+    </div>
+  );
+};
 
-export default Project
+export default Project;

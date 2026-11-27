@@ -1,55 +1,58 @@
-
 import Header from '../layout/Header';
 import AboutMe from './AboutMe';
-import Presentation from './Presentation';
+import Contact from './Contact';
+import Education from './Education';
 import Experience from './Experience';
 import Footer from './Footer';
-import Contact from './Contact';
+import Presentation from './Presentation';
 import Project from './Project';
 
-
-
-
-const Informacion: React.FC = () => {
-
-
-
-
+const Informacion = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black/90 via-gray-900 to-gray-700">
-      {/*<div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900"> */}
-
-
-
+    <div className="min-h-screen bg-[#0e0e10] text-zinc-100">
       <Header />
 
-      {/* Hero Section */}
-      <section id="inicio" className="pt-20 min-h-screen flex items-center">
-        <Presentation />
-      </section>
+      <main>
+        <section id="inicio" className="scroll-mt-20 pt-28 pb-16 sm:pt-36 sm:pb-24">
+          <Presentation />
+        </section>
 
-      {/* About Section */}
-      <section id="acerca" className="py-20">
-        <AboutMe />
-      </section>
+        <section
+          id="acerca"
+          className="scroll-mt-20 border-t border-zinc-800/80 py-16 sm:py-24"
+        >
+          <AboutMe />
+        </section>
 
-      {/* Experience Section */}
-      <section id="experiencia" className="py-20 bg-black/20">
-        <Experience />
-      </section>
+        <section
+          id="experiencia"
+          className="scroll-mt-20 border-t border-zinc-800/80 py-16 sm:py-24"
+        >
+          <Experience />
+        </section>
 
-      {/* Projects Section */}
-      <section id="proyectos" className="py-20">
+        <section
+          id="proyectos"
+          className="scroll-mt-20 border-t border-zinc-800/80 py-16 sm:py-24"
+        >
+          <Project />
+        </section>
 
-        <Project />
-      </section>
+        <section
+          id="formacion"
+          className="scroll-mt-20 border-t border-zinc-800/80 py-16 sm:py-24"
+        >
+          <Education />
+        </section>
 
-      {/* Contact Section */}
-      <section id="contacto" className="py-20 bg-black/20">
-        <Contact />
-      </section>
+        <section
+          id="contacto"
+          className="scroll-mt-20 border-t border-zinc-800/80 py-16 sm:py-24"
+        >
+          <Contact />
+        </section>
+      </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
