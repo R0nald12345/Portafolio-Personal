@@ -1,12 +1,7 @@
-import { ArrowDownRight, Github, Linkedin, MapPin, Youtube } from 'lucide-react';
+import { ArrowDownRight, MapPin } from 'lucide-react';
 import { PROFILE, SOCIAL_LINKS } from '../data/portfolioData';
 import Reveal from '../components/Reveal';
-
-const SOCIAL_ICONS = {
-  github: Github,
-  linkedin: Linkedin,
-  youtube: Youtube,
-} as const;
+import { SocialBrandIcon } from '../components/TechBadge';
 
 const Presentation = () => {
   return (
@@ -61,21 +56,18 @@ const Presentation = () => {
           </div>
 
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-400">
-            {SOCIAL_LINKS.map((link) => {
-              const Icon = SOCIAL_ICONS[link.id];
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-zinc-100"
-                >
-                  <Icon size={15} />
-                  {link.label === 'YouTube' ? link.handle : link.label}
-                </a>
-              );
-            })}
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition-colors hover:text-zinc-100"
+              >
+                <SocialBrandIcon id={link.id} className="h-4 w-4 shrink-0" />
+                {link.label === 'YouTube' ? link.handle : link.label}
+              </a>
+            ))}
           </div>
         </div>
 

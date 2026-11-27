@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, Github, Lock, PlayCircle, Youtube } from 'lucide-react';
+import { ArrowUpRight, Lock } from 'lucide-react';
 import {
   PROJECTS,
   SOCIAL_LINKS,
@@ -7,6 +7,7 @@ import {
 } from '../data/portfolioData';
 import Proyecto from '../components/ListadoProyectos/Proyecto';
 import Reveal from '../components/Reveal';
+import { SocialBrandIcon, TechBadge } from '../components/TechBadge';
 
 type FilterValue = 'all' | ProjectCategory;
 
@@ -113,12 +114,7 @@ const Project = () => {
 
                 <div className="mt-5 flex flex-wrap gap-1.5 border-t border-zinc-800/70 pt-4">
                   {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded border border-zinc-800 bg-zinc-900/70 px-2 py-0.5 font-mono-tech text-[11px] text-zinc-300"
-                    >
-                      {tech}
-                    </span>
+                    <TechBadge key={tech} name={tech} size="sm" />
                   ))}
                 </div>
 
@@ -130,7 +126,7 @@ const Project = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 font-medium text-zinc-200 transition-colors hover:text-white"
                     >
-                      <Github size={14} />
+                      <SocialBrandIcon id="github" className="h-3.5 w-3.5 shrink-0" />
                       Código fuente
                     </a>
                   ) : (
@@ -161,13 +157,13 @@ const Project = () => {
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-1 font-medium text-[#d99b43] transition-colors hover:text-[#e6ae5c]"
+                        className="group inline-flex items-center gap-1.5 font-medium text-zinc-200 transition-colors hover:text-white"
                       >
-                        <PlayCircle size={14} />
+                        <SocialBrandIcon id="youtube" className="h-3.5 w-3.5 shrink-0" />
                         Ver demo
                         <ArrowUpRight
                           size={13}
-                          className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                          className="text-zinc-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-zinc-100"
                         />
                       </a>
                     )}
@@ -192,7 +188,7 @@ const Project = () => {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-1.5 text-zinc-200 transition-colors hover:text-white"
               >
-                <Github size={14} />
+                <SocialBrandIcon id="github" className="h-3.5 w-3.5 shrink-0" />
                 GitHub
                 <ArrowUpRight
                   size={13}
@@ -205,9 +201,9 @@ const Project = () => {
                 href={youtubeProfile.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 text-[#d99b43] transition-colors hover:text-[#e6ae5c]"
+                className="group inline-flex items-center gap-1.5 text-zinc-200 transition-colors hover:text-white"
               >
-                <Youtube size={14} />
+                <SocialBrandIcon id="youtube" className="h-3.5 w-3.5 shrink-0" />
                 {youtubeProfile.handle}
                 <ArrowUpRight
                   size={13}

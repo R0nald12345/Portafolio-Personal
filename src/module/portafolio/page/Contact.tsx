@@ -1,22 +1,9 @@
 import { useState } from 'react';
-import {
-  ArrowUpRight,
-  Check,
-  Copy,
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  Youtube,
-} from 'lucide-react';
+import { ArrowUpRight, Check, Copy, Mail } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa6';
 import { PROFILE, SOCIAL_LINKS } from '../data/portfolioData';
 import Reveal from '../components/Reveal';
-
-const SOCIAL_ICONS = {
-  github: Github,
-  linkedin: Linkedin,
-  youtube: Youtube,
-} as const;
+import { SocialBrandIcon } from '../components/TechBadge';
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -57,7 +44,7 @@ const Contact = () => {
                 href={`mailto:${PROFILE.contact.email}`}
                 className="flex items-center gap-3 text-sm text-zinc-100 transition-colors hover:text-[#d99b43]"
               >
-                <Mail size={16} className="shrink-0 text-zinc-500" />
+                <Mail size={17} className="shrink-0 text-[#d99b43]" />
                 <span>
                   <span className="block font-mono-tech text-[11px] text-zinc-500">
                     Correo electrónico
@@ -81,7 +68,10 @@ const Contact = () => {
               className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-zinc-100 transition-colors hover:bg-zinc-900/60"
             >
               <span className="flex items-center gap-3">
-                <Phone size={16} className="shrink-0 text-zinc-500" />
+                <FaWhatsapp
+                  aria-hidden
+                  className="h-[18px] w-[18px] shrink-0 text-[#25D366]"
+                />
                 <span>
                   <span className="block font-mono-tech text-[11px] text-zinc-500">
                     Teléfono / WhatsApp
@@ -97,32 +87,32 @@ const Contact = () => {
               />
             </a>
 
-            {SOCIAL_LINKS.map((link) => {
-              const Icon = SOCIAL_ICONS[link.id];
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-zinc-100 transition-colors hover:bg-zinc-900/60"
-                >
-                  <span className="flex items-center gap-3">
-                    <Icon size={16} className="shrink-0 text-zinc-500" />
-                    <span>
-                      <span className="block font-mono-tech text-[11px] text-zinc-500">
-                        {link.label}
-                      </span>
-                      <span className="font-medium">{link.handle}</span>
-                    </span>
-                  </span>
-                  <ArrowUpRight
-                    size={15}
-                    className="text-zinc-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-zinc-200"
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.id}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between gap-3 px-5 py-4 text-sm text-zinc-100 transition-colors hover:bg-zinc-900/60"
+              >
+                <span className="flex items-center gap-3">
+                  <SocialBrandIcon
+                    id={link.id}
+                    className="h-[17px] w-[17px] shrink-0"
                   />
-                </a>
-              );
-            })}
+                  <span>
+                    <span className="block font-mono-tech text-[11px] text-zinc-500">
+                      {link.label}
+                    </span>
+                    <span className="font-medium">{link.handle}</span>
+                  </span>
+                </span>
+                <ArrowUpRight
+                  size={15}
+                  className="text-zinc-500 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-zinc-200"
+                />
+              </a>
+            ))}
           </div>
         </Reveal>
       </div>

@@ -1,6 +1,7 @@
-import { ArrowUpRight, Youtube } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { PROFILE, SKILL_GROUPS, SOCIAL_LINKS } from '../data/portfolioData';
 import Reveal from '../components/Reveal';
+import { SocialBrandIcon, TechBadge } from '../components/TechBadge';
 
 const youtubeLink = SOCIAL_LINKS.find((link) => link.id === 'youtube');
 
@@ -20,7 +21,10 @@ const AboutMe = () => {
           </p>
         </Reveal>
 
-        <Reveal className="space-y-4 text-sm leading-relaxed text-zinc-300 sm:text-base lg:col-span-8" delay={1}>
+        <Reveal
+          className="space-y-4 text-sm leading-relaxed text-zinc-300 sm:text-base lg:col-span-8"
+          delay={1}
+        >
           {PROFILE.aboutParagraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
@@ -31,13 +35,13 @@ const AboutMe = () => {
                 href={youtubeLink.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-[#d99b43] transition-colors hover:text-[#e6ae5c]"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-200 transition-colors hover:text-white"
               >
-                <Youtube size={16} />
+                <SocialBrandIcon id="youtube" className="h-4 w-4 shrink-0" />
                 Ver playlists en {youtubeLink.handle}
                 <ArrowUpRight
                   size={14}
-                  className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="text-zinc-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-zinc-100"
                 />
               </a>
             </div>
@@ -45,7 +49,7 @@ const AboutMe = () => {
         </Reveal>
       </div>
 
-      <div className="mt-16 pt-12 border-t border-zinc-800/80">
+      <div className="mt-16 border-t border-zinc-800/80 pt-12">
         <Reveal className="mb-8">
           <p className="font-mono-tech text-xs uppercase tracking-wider text-zinc-500">
             Stack técnico
@@ -64,12 +68,7 @@ const AboutMe = () => {
                 </h4>
                 <div className="flex flex-wrap gap-2 md:col-span-8">
                   {group.items.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded border border-zinc-800 bg-[#141417] px-2.5 py-1 font-mono-tech text-xs text-zinc-200 transition-colors hover:border-zinc-700 hover:text-white"
-                    >
-                      {skill}
-                    </span>
+                    <TechBadge key={skill} name={skill} size="md" />
                   ))}
                 </div>
               </div>
